@@ -42,17 +42,66 @@ yarn global add @vue/cli
 vue create my-project
 ```
 
+![1552730416710](assets/1552730416710.png)
+
+选择 default，然后等待安装
+
+![1552730504674](assets/1552730504674.png)
+
+![1552730534647](assets/1552730534647.png)
+
+继续等待...
+
+![1552730563178](assets/1552730563178.png)
+
+安装成功。
+
+> 最后会提示你使用 cd 命令进入刚刚创建生成的项目中。
+>
+> 然后让你执行 yarn serve（如果没有安装 yarn，则这里是 npm） 去启动你的项目。
+
 启动开发模式：
 
 ```bash
-npm run dev
+npm serve
 ```
+
+![1552730755074](assets/1552730755074.png)
+
+等待启动开发服务。。。
+
+![1552730773305](assets/1552730773305.png)
+
+启动开发服务成功。
+
+然后打开浏览器，访问提示的地址。
+
+![1552730860508](assets/1552730860508.png)
+
+如果能看到这一的一个页面，则正面初始化创建成功了。
 
 ## 目录结构
 
-```
+![1552730942292](assets/1552730942292.png)
 
-```
+
+
+| 名称              | 说明                                                |
+| ----------------- | --------------------------------------------------- |
+| node_modules      | 第三方包存储目录                                    |
+| public            | 静态资源，已被托管                                  |
+| src               | 源代码                                              |
+| .gitignore        | git忽略文件，暂时不关心，我们还没有在项目中使用 git |
+| babel.config.js   | 先不关心                                            |
+| package.json      | 包说明文件                                          |
+| README.md         | 项目的说明文本文件                                  |
+| package-lock.json | 包的版本锁定文件                                    |
+
+### src 目录结构
+
+###  main.js
+
+![1552731512732](assets/1552731512732.png)
 
 ## 组件化构建模型图
 
@@ -91,20 +140,6 @@ npm run dev
 npm run build
 ```
 
-## Vue CLI 3（还没有正式发布）
+## 模块化
 
-- 号称是零配置，也不需要看到配置文件
-
-依赖
-
-- Node 8.9 +，推荐 8.11 +
-
-安装：
-
-- 卸载之前的
-  - `npm uninstall --global vue-cli`
-- 安装最新的 `npm install --global @vue/cli`
-
-快速原型：
-
-- `npm install -g @vue/cli-service-globalA`
+> http://es6.ruanyifeng.com/#docs/module
