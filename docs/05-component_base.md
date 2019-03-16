@@ -1,6 +1,6 @@
-# 组件基础
+# 第5章 组件基础
 
-> 组件基础：
+> 学习目标
 > - 了解组件的概念
 > - 掌握组件的定义
 > - 了解组件的组织方式
@@ -8,9 +8,9 @@
 
 组件 (Component) 是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。
 
-![Component Tree](https://cn.vuejs.org/images/components.png)
+![Component Tree](./assets/components.png)
 
-## 通过 Element 感受组件的威力
+## 通过 Element-UI 感受组件的威力
 
 Element 是基于 Vue 开发的一个知名的第三方组件库，它能帮助我们更加快速的构建应用。
 
@@ -22,7 +22,7 @@ Element 是基于 Vue 开发的一个知名的第三方组件库，它能帮助�
 npm i element-ui
 ```
 
-Hello World:
+
 
 ```html
 <!DOCTYPE html>
@@ -158,13 +158,13 @@ new Vue({
 组件设计初衷就是要配合使用的，最常见的就是形成父子组件的关系：组件 A 在它的模板中使用了组件 B。它们之间必然需要相互通信：父组件可能要给子组件下发数据，子组件则可能要将它内部发生的事情告知父组件。然而，通过一个良好定义的接口来尽可能将父子组件解耦也是很重要的。这保证了每个组件的代码可以在相对隔离的环境中书写和理解，从而提高了其可维护性和复用性。
 在 Vue 中，父子组件的关系可以总结为 prop 向下传递，事件向上传递。父组件通过 prop 给子组件下发数据，子组件通过事件给父组件发送消息。看看它们是怎么工作的。
 
-![prop 向下传递，事件向上传递](https://cn.vuejs.org/images/props-events.png)
+![prop 向下传递，事件向上传递](assets/props-events.png)
 
 ---
 
 ## 组件化构建 TodoMVC
 
-![todomvc-component.png](../media/todomvc-component.png)
+![todomvc-component.png](./media/todomvc-component.png)
 
 ---
 

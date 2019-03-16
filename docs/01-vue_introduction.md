@@ -1,3 +1,5 @@
+# 第1章 Vue.js 介绍
+
 ## 疯狂发展的前端技术
 
 - 前端交互越来越多，功能需求越来越复杂
@@ -92,7 +94,7 @@ Vue 是为了克服 HTML 在构建应用上的不足而设计的。Vue 有着诸
 
 ## 关于作者
 
-![01ux0sDOKOzv](https://ws4.sinaimg.cn/large/006tNc79ly1fmgrsgfs25j30h40cdgng.jpg)
+![01ux0sDOKOzv](assets/006tNc79ly1fmgrsgfs25j30h40cdgng.jpg)
 
 - [尤雨溪 - 知乎](https://www.zhihu.com/people/evanyou/answers)
 - [Vue作者尤雨溪：以匠人的态度不断打磨完善Vue （图灵访谈）](http://www.ituring.com.cn/article/273032)

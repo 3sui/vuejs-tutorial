@@ -1,4 +1,6 @@
-# 基础案例：TodoMVC
+# 第4章 基础案例 - TodoMVC
+
+![1552609706793](./assets/1552609706793.png)
 
 > 学习目标：
 > - 掌握 Vue 中常用的实例选项
@@ -8,12 +10,37 @@
 
 - [TodoMVC](http://todomvc.com/)
 
+## 知识点
+
+- 数据绑定
+- 计算属性 computed
+- 侦听器 watch
+- Class 与 Style 样式处理
+- 条件渲染
+- 列表渲染
+- 事件处理
+- 表单输入双向数据绑定
+- 组件...
+
 ---
 
 ## 需求说明
 
 - [TodoMVC 需求说明](https://github.com/tastejs/todomvc/blob/master/app-spec.md)
 - [脑图整理的需求说明](http://naotu.baidu.com/file/b935b732b2dbf1b2ff12a3291d7f24e5?token=f1973a115e68f4e1)
+
+- [x] 列表展示
+  - [x] 有数据
+  - [x] 无数据
+- [x] 添加任务
+- [x] 删除任务
+- [ ] 任务项
+  - [ ] 切换单个任务项的完成状态
+  - [ ] 任务项的完成状态样式
+- [ ] 切换所有任务的完成状态
+- [ ] 显式剩余任务数量
+- [ ] 清除所有已完成任务项
+- [ ] 
 
 ---
 
@@ -35,7 +62,93 @@ npm install
 # 打开 todomvc-vue 中的 index.html 预览模板
 ```
 
+```bash
+# 安装依赖
+npm i
+```
+
+导入 vue
+
+```bash
+npm i vue
+```
+
+hello world
+
+```javascript
+new Vue({
+	el: '#app', // 在够用的情况下范围尽量小
+	data: {
+		message: 'TodoMVC'
+	}
+})
+
+```
+
+
+
 ---
+
+### 安装 Web 服务工具
+
+http-server
+
+安装
+
+```bash
+npm i --save-dev http-server
+```
+
+配置
+
+```json
+{
+  "private": true,
+  "dependencies": {
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.0",
+    "vue": "^2.6.9"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "start": "http-server"
+  }
+}
+
+```
+
+启动（无论你是什么编辑器）
+
+```bash
+npm start
+```
+
+### --save 和 --save-dev
+
+![1552613398083](assets/1552613398083.png)
+
+- `npm install --save 包名`
+  - 作用：安装第三方包
+  - `--save` 可以省略
+  - 将依赖信息写入 `dependencies` 选项中
+
+- `npm install --save-dev 包名`
+  - 作用：安装第三方包
+  - `--save-dev` 不能省略
+  - 将一来信息写入 `devDependencies` 选项中
+- `npm install`
+  - 作用：安装 package.json 文件中所有的依赖项，`dependencies` 和 `devDependencies`
+- `npm install --production`
+  - 作用：只安装 dependencies 中的依赖项
+- 结论
+  - 核心依赖通过 `--save` 存储到 dependencies 中
+  - 开发依赖（工具类）通过 `--save-dev` 存储到 devDependencies 中
+
+
+
+
 
 ## 任务列表
 
@@ -90,7 +203,7 @@ npm install
 
 ## 添加任务
 
-```html{5}
+```html
 ...
 <input
   class="new-todo"
@@ -272,6 +385,13 @@ computed: {
 ...
 ```
 
+## 数据过滤
+
+- window.onhashchange 事件
+- 展示过滤结果数组
+
+
+
 ## 持久化存储
 
 ```javascript{6,12}
@@ -280,7 +400,7 @@ new Vue({
   ...
   data: {
     ...
-    todos: JSON.parse(window.localStorage.getItem('todos') || '[]')
+    todos: JSON.parse(window.localStorage.getItem('todos')) || []
     ...
   },
   ...

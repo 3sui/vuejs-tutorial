@@ -1,8 +1,4 @@
----
-sidebar: auto
----
-
-# 电商管理系统
+# 第10章 电商管理系统
 
 ## 零、准备
 
@@ -30,7 +26,7 @@ npm start
 
 执行完 `npm start` 命令之后，如果看到如下提示信息则说明部署成功。
 
-![](./README/README0.png)
+![](./assets/README0.png)
 
 ::: tip
 以后每次开发的时候一定记得 `npm start` 把接口服务启动起来。
@@ -51,7 +47,7 @@ yarn start
 
 执行完 `yarn start` 命令之后会看到如下提示：
 
-![](./README/README2.png)
+![](./assets/README2.png)
 
 ::: tip
 执行 `yarn start` 命令之后默认开启的服务占用的端口号是 `8080`，如果 8080 被占用，则会 +1 依次向后使用，例如 8081、8082、8083...，以终端提示为准。
@@ -136,7 +132,7 @@ npm install -g vue-cli
 vue init webpack admin-vue
 ```
 
-![](./README/README1.png)
+![](./assets/README1.png)
 
 ::: tip
 如果装包的过程长时间不动，建议 `Ctrl + C` 打断安装，自己手动在该项目中执行 `npm install`
@@ -151,7 +147,7 @@ npm run dev
 
 ### 项目结构介绍
 
-![xxx](../media/README4.png)
+![xxx](./media/README4.png)
 
 ```text{5-11}
 .
@@ -298,6 +294,7 @@ git push -u origin master
 ### 使用路由导航守卫结合 token 处理视图访问拦截
 
 > 参考链接：
+>
 > - [路由 - 导航守卫](https://router.vuejs.org/zh-cn/advanced/navigation-guards.html)
 
 ```sequence
@@ -366,6 +363,7 @@ export default router
 ### 导入 ElementUI
 
 > 参考链接：
+>
 > - [Element 官网](http://element-cn.eleme.io)
 
 安装依赖：
@@ -401,6 +399,7 @@ new Vue({
 ### 布局登陆组件
 
 > 参考链接：
+>
 > - [Element - Form表单](http://element-cn.eleme.io/#/zh-CN/component/form)
 
 参考 Element 的 Form表单组件文档，我们先来个最简单的登陆表单。
@@ -901,6 +900,7 @@ const router = new Router({
 ### 在用户列表中使用表格组件
 
 > 参考链接：
+>
 > - [Element - Table 表格](http://element.eleme.io/#/zh-CN/component/table)
 
 `src/components/user-list/template.html`:
@@ -1374,7 +1374,7 @@ export default {
 - 所有需要授权的 API 都要配置请求头 Token
   - 利用请求拦截器，参考文档：https://github.com/axios/axios#interceptors
 
-![请求拦截器](../media/http-guard.png)
+![请求拦截器](./media/http-guard.png)
 
 在 `src/assets/js/http.js`:
 
@@ -1809,7 +1809,7 @@ export default {
 - 接口测试
 - 功能实现
 
-![查看角色的权限列表](../media/right-list.png)
+![查看角色的权限列表](./media/right-list.png)
 
 #### 布局
 
@@ -1955,7 +1955,7 @@ export default {
 4. 将角色拥有的权限默认选中
 5. 保存授权更新
 
-![角色授权.png](../media/role-rights-tree.png)
+![角色授权.png](./media/role-rights-tree.png)
 
 ## 四、商品分类管理
 

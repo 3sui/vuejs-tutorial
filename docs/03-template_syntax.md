@@ -1,4 +1,4 @@
-# 模板语法
+# 第3章 模板语法
 
 ## Vue 实例
 
@@ -134,7 +134,6 @@ vm.a // 2
 - [Vue 官网 - 实例生命周期](https://cn.vuejs.org/v2/guide/instance.html#实例生命周期)
 - [生命周期钩子函数 API 文档](https://cn.vuejs.org/v2/api/#选项-生命周期钩子)
 - 
-
 
 ---
 

@@ -1,4 +1,4 @@
-# 起步
+# 第2章 起步
 
 - 搜索是什么
 - 看官网能干什么
@@ -115,7 +115,7 @@
 
 ## 综合案例：`Todo List`
 
-![](../media/getting-started0.png)
+![](./media/getting-started0.png)
 
 - 任务列表展示
 - 添加任务
