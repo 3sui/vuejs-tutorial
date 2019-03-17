@@ -147,7 +147,7 @@ npm run dev
 
 ### 项目结构介绍
 
-![xxx](./media/README4.png)
+![xxx](./assets/README4.png)
 
 ```text{5-11}
 .
@@ -1374,7 +1374,7 @@ export default {
 - 所有需要授权的 API 都要配置请求头 Token
   - 利用请求拦截器，参考文档：https://github.com/axios/axios#interceptors
 
-![请求拦截器](./media/http-guard.png)
+![请求拦截器](./assets/http-guard.png)
 
 在 `src/assets/js/http.js`:
 
@@ -1809,7 +1809,7 @@ export default {
 - 接口测试
 - 功能实现
 
-![查看角色的权限列表](./media/right-list.png)
+![查看角色的权限列表](./assets/right-list.png)
 
 #### 布局
 
@@ -1955,7 +1955,7 @@ export default {
 4. 将角色拥有的权限默认选中
 5. 保存授权更新
 
-![角色授权.png](./media/role-rights-tree.png)
+![角色授权.png](./assets/role-rights-tree.png)
 
 ## 四、商品分类管理
 

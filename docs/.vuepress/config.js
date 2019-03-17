@@ -1,11 +1,22 @@
 const sidebar = require('./sidebar')
+const configureWebpack = require('./webpack.config')
 
 module.exports = {
+  /**
+   * 基础路径
+   * 参考：https://vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84
+   */
   base: '/',
   title: 'Vue.js 入门教程',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: '持续更新中...',
   host: '0.0.0.0',
   port: 8080,
+
+  /**
+   * 自定义 webpack 配置
+   */
+  configureWebpack,
+
   /**
    * 指定 vuepress build 的输出目录
    * 默认 .vuepress/dist

@@ -1,7 +1,6 @@
 {
   "name": "vuejs-tutorial",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/lipengzhou/vuejs-tutorial.git",
   "author": "lipengzhou <lpzmail@163.com>",
   "license": "MIT",
@@ -16,6 +15,10 @@
   },
   "dependencies": {
     "@vuepress/plugin-back-to-top": "^1.0.0-alpha.0",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.0"
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.0",
+    "moment": "^2.24.0"
+  },
+  "resolutions": {
+    "webpack-dev-middleware": "3.6.0"
   }
 }

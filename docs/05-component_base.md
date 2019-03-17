@@ -164,7 +164,7 @@ new Vue({
 
 ## 组件化构建 TodoMVC
 
-![todomvc-component.png](./media/todomvc-component.png)
+![todomvc-component.png](./assets/todomvc-component.png)
 
 ---
 

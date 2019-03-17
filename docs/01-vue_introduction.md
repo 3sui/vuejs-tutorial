@@ -94,8 +94,12 @@ Vue 是为了克服 HTML 在构建应用上的不足而设计的。Vue 有着诸
 
 ## 关于作者
 
-![01ux0sDOKOzv](assets/006tNc79ly1fmgrsgfs25j30h40cdgng.jpg)
+![尤雨溪](./assets/006tNc79ly1fmgrsgfs25j30h40cdgng.jpg)
 
 - [尤雨溪 - 知乎](https://www.zhihu.com/people/evanyou/answers)
 - [Vue作者尤雨溪：以匠人的态度不断打磨完善Vue （图灵访谈）](http://www.ituring.com.cn/article/273032)
 - [尤雨溪 - 新浪微博](https://weibo.com/arttechdesign)
+- [比较详细的采访 Vue 作者尤雨溪](https://www.zcfy.cc/article/an-interview-with-vue-js-creator-evan-you)
+- [作者 github](https://github.com/yyx990803)
+- [尤雨溪谈Vue.js ：缔造自由与真我](https://gitee.com/gitee-stars/14)
+
