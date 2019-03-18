@@ -135,6 +135,38 @@ npm run serve
 
 - 作用：组件的 JavaScript ，用来配置组件的选项
 
+写法规则：
+
+```html
+<script>
+	// 1. 使用一个普通对象配置组件的选项
+  const componentOptions = {
+    data () {
+      return {}
+    },
+    methods: {}
+  }
+  
+  // 2. 将这个对象导出
+  export default componentOptions
+</script>
+```
+
+为了方便，我们可以直接在定义的同时直接导出
+
+```html
+<script>
+  export default {
+    data () {
+      return {}
+    },
+    methods: {}
+  }
+</script>
+```
+
+
+
 ### style
 
 当 `<style>` 标签有 `scoped` 属性时，它的 CSS 只作用于当前组件中的元素。
