@@ -136,6 +136,7 @@ new Vue({
 ```
 <div id="example">
   <div>A custom component!</div>
+  <my-component></my-component>
 </div>
 ```
 

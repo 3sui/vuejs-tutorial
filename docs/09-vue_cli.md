@@ -31,6 +31,8 @@ yarn global add @vue/cli
 
 ![1552844854188](./assets/1552844854188.png)
 
+> 注意：全局工具安装一次就可以了，以后直接使用即可。
+
 使用 `vue --help` 查看使用帮助。
 
 ![1552844831280](./assets/1552844831280.png)
@@ -113,7 +115,7 @@ npm run serve
 
 ##  程序的启动
 
-- 找到 `main.js`
+- 找到 `main.js` 入口
 - 加载 Vue
 - 加载 App 组件
 - 创建 Vue 实例
@@ -128,7 +130,6 @@ npm run serve
 ### template
 
 - 作用：组件的模板
-
 - 只能有一个根节点
 
 ### script
@@ -315,6 +316,151 @@ Vue.component('Com1', Com1)
 ## 代码校验
 
 ## ECMAScript 6 Module
+
+历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。其他语言都有这项功能，比如 Ruby 的`require`、Python 的`import`，甚至就连 CSS 都有`@import`，但是 JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。
+
+在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD（require.js 库，专门用于在浏览器中进行模块化开发） 两种。前者用于服务器（Node.js），后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。
+
+
+
+### 学习准备环境
+
+目前无论是 Node.js 还是浏览器都还无法直接原生支持 ECMAScript 6 模块 API。
+
+但是对于浏览器来说我们可以使用构建工具将模块代码转换为浏览器能识别的代码。
+
+Node.js 中可以开启实验功能来支持该功能。
+
+为了学习方便，我们这里使用 Node 环境来学习ES6 模块规则。
+
+首先将你的文件后缀名定义为 `.mjs`，然后执行这个脚本文件的时候加上 `--experimental-modules` 选项。
+
+例如我有一个 `main.mjs`，则执行命令是：
+
+```bash
+node --experimental-modules main.mjs
+```
+
+> 这里只是用于测试学习，不要在生产环境中使用这个模块规则。
+
+
+
+foo.js
+
+```javascript
+// export 也用于导出
+// 但是可以多次使用
+export const a = 1
+export const b = 2
+export const c = 3
+export const d = 4
+
+function add(x, y) {
+  return x + y
+}
+
+// 等价于 module.exports = add
+// export default 只能使用一次
+export default add
+
+// 模块中有多个成员，一般都使用 export xxx
+// 如果只有一个成员，那就 export default
+// 有时候也会混搭
+//   既有 export default 成员（只能有一个）
+//   也有 export xxx成员（多个）
+
+```
+
+main.js
+
+```javascript
+// 加载 export default 导出的成员
+// import foo from './foo'
+// console.log(foo)
+
+
+// 按需加载 export 导出的成员
+// import { a, b } from './foo.mjs'
+// console.log(a, b)
+
+// 一次性加载所有成员(包括 default 成员)
+// import * as foo from './foo.mjs'
+// console.log(foo)
+// console.log(foo.a)
+// console.log(foo.default(10, 3)) // 很少这样去访问 default 成员
+
+// 为了方便，先加载默认 default 成员，然后加载 其它 export 成员
+// import abc, { a, b } from './foo'
+// console.log(abc) // export default 成员
+// console.log(a, b) // 
+
+// 可以使用 as 起别名
+import { a as aa } from './foo'
+console.log(aa)
+
+
+// console.log(foo(1, 2))
+
+```
+
+## 综合案例
+
+- 单页面应用程序
+- Vue（全家桶一员）
+- Vue CLI（全家桶）
+- axios（全家桶）
+  - Vue 本身不提供 ajax 封装请求
+  - 我们可以使用原生 XHR
+  - 也可以使用jQuery 的 ajax（没必要，浪费）
+  - 我们推荐更纯粹的 axios（这个库只封装了 ajax 操作）
+- Vue Router（全家桶一员）
+- 模块化（ECMAScript 6 Module）
+  - import
+  - export
+
+
+
+## 单页面应用程序
+
+
+
+### 概念
+
+- 交互体验好，响应速度快
+- 缺点：不利于 SEO 优化
+  - 能不能解决？可以。
+  - 更高级的一个概念：前后端同构
+  - Vue 提供了一个服务端渲染解决方案：Vue Server Renderers
+    - 能让你在 Node 创建的 Web 服务中把 Vue 当做模板引擎来使用
+  - 说白了就是服务端渲染结合单页面渲染的特点，既能拥有 SEO 优化，还能保持单页面应用的特点。
+- 适合开发后台管理系统、移动端页面（交互方式就像访问原生 App 一样）
+
+### 单页面导航路径
+
+- 概念
+- 路径
+  - 一般使用锚点，也就是 hash 作为页面导航的路径标识
+  - 为什么？因为正常的 url 地址会发请求，而 hash 锚点不会发请求刷新页面
+- VueRouter 内部监视了 hash  的改变
+  - window.onhashchange
+- 然后根据 hash  的改变去展示路由规则中配置的组件
+- Vue Router 默认要求  hash 导航路径都以 #/ 开头
+  - 为什么？
+  - 主要是为了和正常的 hash 锚点（网页内部定位，id）作区别
+  - 例如我们使用锚点内部定位的时候，需要给元素起 id，我们几乎不会给这个id起名为 /xxx
+  - 如果 VueRouter 没有 #/ 的规则，例如直接 #foo 就可能会和你锚点的那个 id foo 冲突。
+
+有人会说，能不能让 url 漂亮点儿，不要使用 hash 呢？
+
+可以。
+
+我们可以利用 HTML5 history 的的方式使用传统的 url。（我们可以用 JavaScript 代码控制 url）。
+
+- VueRouter 默认是 hash 路径模式
+- 它也支持传统的 url 模式（HTML5 history）https://router.vuejs.org/zh/guide/#html
+  - 需要额外的服务器配置
+
+
 
 ## 相关命令
 
