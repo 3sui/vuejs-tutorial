@@ -55,7 +55,13 @@ module.exports = {
     editLinks: true,
     editLinkText: '在 GitHub 上编辑此页',
     sidebar,
-    sidebarDepth: 2
+    sidebarDepth: 2,
+    serviceWorker: {
+      updatePopup: { 
+        message: "有新的内容更新.", 
+        buttonText: "点击刷新"
+      }
+    }
   },
 
   /**
