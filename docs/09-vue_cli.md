@@ -100,7 +100,7 @@ npm run serve
 
 ### src 目录结构
 
-![1552879713681](assets/1552879713681.png)
+![1552879713681](./assets/1552879713681.png)
 
 | 名称       | 说明                               |
 | ---------- | ---------------------------------- |
@@ -123,13 +123,17 @@ npm run serve
 
 接下来，我们就不再去 html 页面中写模板了，而是**一切皆组件**。
 
-## 组件化构建模型图
-
 ## .vue 单文件组件
 
 ### template
 
+- 作用：组件的模板
+
+- 只能有一个根节点
+
 ### script
+
+- 作用：组件的 JavaScript ，用来配置组件的选项
 
 ### style
 
@@ -188,6 +192,53 @@ npm run serve
 ```css
 .a[data-v-f3f3eg9] .b { /* ... */ }
 ```
+
+## 单文件组件的定义和使用
+
+### 创建单文件组件
+
+- 推荐把通用组件创建到 `components` 目录中
+- 把视图组件定义到 `views` 目录中
+
+### 全局注册使用
+
+在 main.js 文件中
+
+```javascript
+...
+import Vue from 'vue'
+import Com1 from './components/Com1.vue'
+
+...
+
+Vue.component('Com1', Com1)
+```
+
+接下来就可以在任何组件中使用 Com1 组件了
+
+### 局部注册使用
+
+在某个组价中局部注册使用
+
+```html
+<template>
+	<div>
+    <!-- 使用 Com2 组件 -->
+    <Com2></Com2>
+  </div>
+</template>
+<script>
+	import Com2 from './components/Com2'
+  
+  export default {
+    components: {
+      Com2
+    }
+  }
+</script>
+```
+
+
 
 ## 热重载
 
