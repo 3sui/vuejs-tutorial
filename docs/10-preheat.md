@@ -275,13 +275,388 @@ new Vue({
 
 ## 功能实现
 
-### 列表
+### 列表展示
+
+```html
+<template>
+<div>
+  <h2>内容管理</h2>
+  <div>
+    <router-link to="/foo/add">添加</router-link>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in posts" :key="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.content }}</td>
+        <td>
+          <a href="#">编辑</a>
+          <a href="#">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'Foo',
+  created () {
+    this.loadPosts()
+  },
+  data () {
+    return {
+      posts: []
+    }
+  },
+  methods: {
+    loadPosts () {
+      axios.get('http://localhost:3000/posts')
+        .then(res => {
+          this.posts = res.data
+        })
+    }
+  }
+}
+</script>
+
+<style>
+</style>
+
+```
+
+
 
 ### 删除
 
+```html
+<template>
+<div>
+  <h2>内容管理</h2>
+  <div>
+    <router-link to="/foo/add">添加</router-link>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in posts" :key="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.content }}</td>
+        <td>
+          <router-link :to="{
+            path: '/foo/edit',
+            query: {
+              id: item.id,
+              a: 123
+            }
+          }">编辑</router-link>
+          <a @click.prevent="handleDelete(item)" href="#">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'Foo',
+  created () {
+    this.loadPosts()
+  },
+  data () {
+    return {
+      posts: []
+    }
+  },
+  methods: {
+    loadPosts () {
+      axios.get('http://localhost:3000/posts')
+        .then(res => {
+          this.posts = res.data
+        })
+    },
+
+    handleDelete (item) {
+      if (!window.confirm('确认删除吗？')) {
+        return
+      }
+
+      axios.delete(`http://localhost:3000/posts/${item.id}`)
+        .then(res => {
+          if (res.status === 200) {
+            this.loadPosts()
+          }
+        })
+    }
+  }
+}
+</script>
+
+<style>
+</style>
+
+```
+
+
+
 ### 添加
 
-### 编辑
+```html
+<template>
+<div>
+  <form>
+    <div>
+      <label for="title">标题</label>
+      <input type="text" id="title" v-model="formData.title">
+    </div>
+    <div>
+      <label for="content">内容</label>
+      <textarea id="content" cols="30" rows="10" v-model="formData.content"></textarea>
+    </div>
+    <div>
+      <!-- 
+        prevetn 事件修饰符，阻止绑定元素的默认行为
+       -->
+      <button @click.prevent="handleAdd">提交</button>
+    </div>
+  </form>
+</div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'FooAdd',
+  data () {
+    return {
+      // 1. 初始化一个用来存储表单数据的对象
+      // 2. 然后将表单数据对象中的成员分别绑定到表单元素上
+      formData: {
+        title: '',
+        content: ''
+      }
+    }
+  },
+  methods: {
+    handleAdd () {
+      // 1. 获取表单数据
+      const formData = this.formData
+
+      // 2. 发请求
+      axios.post('http://localhost:3000/posts', formData)
+        .then(res => {
+          // 3. 根据响应结果进行后续处理
+          if (res.status === 201) {
+            // window.location.href = '#/foo'
+            this.$router.push('/foo')
+          }
+        })
+    }
+  }
+}
+</script>
+
+<style>
+</style>
+
+```
+
+
+
+### 动态展示编辑页面
+
+首先处理列表页的编辑链接
+
+```html
+...
+<td>
+  <router-link :to="{
+    path: '/foo/edit',
+    query: {
+    	id: item.id
+    }
+  }">编辑</router-link>
+  <a @click.prevent="handleDelete(item)" href="#">删除</a>
+</td>
+...
+```
+
+然后在编辑页面
+
+```html
+<template>
+<div>
+  <h2>编辑内容</h2>
+  <form>
+    <div>
+      <label for="title">标题</label>
+      <input type="text" id="title" v-model="formData.title">
+    </div>
+    <div>
+      <label for="content">内容</label>
+      <textarea id="content" cols="30" rows="10" v-model="formData.content"></textarea>
+    </div>
+    <div>
+      <!-- 
+        prevetn 事件修饰符，阻止绑定元素的默认行为
+       -->
+      <button>提交</button>
+    </div>
+  </form>
+</div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'FooEdit',
+  created () {
+    // 我们可以在 created 中获取路由参数
+    //  $route
+    //    path  当前请求路径，不包含 ? 查询字符串
+    //    query 解析到的查询字符串对象
+    //    params 解析到的动态路径参数
+    //    fullPath 当前请求的完整路径，包含 ? 查询字符串
+    //    meta 路由元数据
+    // console.log(this.$route)
+    this.loadPost()
+  },
+  data () {
+    return {
+      formData: {
+        title: '',
+        content: ''
+      }
+    }
+  },
+  methods: {
+    loadPost () {
+      const { id } = this.$route.query
+      axios.get(`http://localhost:3000/posts/${id}`)
+        .then(res => {
+          this.formData = res.data
+        })
+    }
+  }
+}
+</script>
+
+<style>
+</style>
+
+```
+
+### 提交编辑
+
+```html
+<template>
+<div>
+  <h2>编辑内容</h2>
+  <form>
+    <div>
+      <label for="title">标题</label>
+      <input type="text" id="title" v-model="formData.title">
+    </div>
+    <div>
+      <label for="content">内容</label>
+      <textarea id="content" cols="30" rows="10" v-model="formData.content"></textarea>
+    </div>
+    <div>
+      <!-- 
+        prevetn 事件修饰符，阻止绑定元素的默认行为
+       -->
+      <button @click.prevent="handleEdit">提交</button>
+    </div>
+  </form>
+</div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'FooEdit',
+  created () {
+    this.loadPost()
+  },
+  data () {
+    return {
+      formData: {
+        title: '',
+        content: ''
+      }
+    }
+  },
+  methods: {
+    loadPost () {
+      const { id } = this.$route.query
+      axios.get(`http://localhost:3000/posts/${id}`)
+        .then(res => {
+          this.formData = res.data
+        })
+    },
+
+    handleEdit () {
+      const formData = this.formData
+      // axios.patch()
+      axios({
+        method: 'PATCH',
+        url: `http://localhost:3000/posts/${formData.id}`,
+        data: formData
+      }).then(res => {
+        // console.log(res)
+        if (res.status === 200) {
+          this.$router.push('/foo')
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style>
+</style>
+
+```
+
+
+
+## 编译打包
+
+项目开发完成后，面临的就是如何将项目进行打包上线，放到服务器中。
+
+```bash
+npm run build
+```
+
+
+
+
 
 ## 总结
 
