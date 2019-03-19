@@ -13,6 +13,7 @@ module.exports = [
   '/07-ajax',
   '/08-vue_router',
   '/09-vue_cli',
-  '/10-pinyougou',
-  '/11-webpack'
+  '/10-preheat',
+  '/11-pinyougou',
+  '/12-webpack'
 ]
