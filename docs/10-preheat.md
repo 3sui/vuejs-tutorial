@@ -48,10 +48,43 @@ export default new VueRouter({
 })
 ```
 
-在 `main.js` 中挂在路由实例到 Vue 实例中
+在 `src/main.js` 中挂在路由实例到 Vue 实例中
 
 ```javascript
 ...
+import router from './router'
+...
+
+new Vue({
+  render: h => h(App),
+  router
+}).$mount('#app')
+```
+
+> 键名 router 是 Vue 实例选项成员（就像 data、methods 一样，固定语法），值 router 是我们在 router/inde.js 中 new 出来的 VueRouter 路由实例
+
+最后，在 `src/App.vue` 中设置路由的出口
+
+```html
+<template>
+<div id="app">
+  <!-- 头部组件 -->
+  <AppHeader></AppHeader>
+  <!-- 侧边栏组件 -->
+  <div class="main">
+    <AppAside></AppAside>
+    <div class="content">
+      <!--
+				router-view 是一个路由占位符，它是动态的，它会根据路由规则展示不同的组件。例如
+				/ Home 组件
+				/foo Foo组件
+				/bar Bar组件
+			-->
+      <router-view></router-view>
+    </div>
+  </div>
+</div>
+</template>
 ```
 
 
@@ -65,6 +98,8 @@ export default new VueRouter({
 ![1552975362250](./assets/1552975362250.png)
 
 > 注意：在使用接口期间不要关闭这个命令行窗口
+
+以下接口的基准路径都是 `http://localhost:3000`
 
 ### 获取内容列表
 
@@ -133,6 +168,18 @@ export default new VueRouter({
 
 ![1552976160013](./assets/1552976160013.png)
 
+## Postman 接口测试工具
+
+- 官网 https://www.getpostman.com/
+- 下载
+- 安装
+- 使用
+  - 基本使用
+  - 收藏功能
+  - 分享
+
+
+
 ## 单页面应用程序
 
 ### 概念
@@ -169,13 +216,11 @@ export default new VueRouter({
 
 ### 缺点
 
-
-2、前进、后退、地址栏等，需要程序进行管理；
-3、书签，需要程序来提供支持；
-
-
-
 - 不利于 SEO （搜索引擎优化）
+  - Vue SSR 提供了单页面应用程序 SEO 优化问题
+  - 高级概念：前后端同构
+    - 服务端渲染
+    - 客户端渲染
 - 初次加载耗时较多
   - 单页应用有两种加载方式
   - 方式一：用户请求页面的时候，把所有的页面（组件）资源都下载下来，完了切换页面的时候速度就非常快，第一次慢一点，以后就很快了

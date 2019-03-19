@@ -342,6 +342,8 @@ Vue.component('Com1', Com1)
 
 ## ECMAScript 6 Module
 
+> 建议学习文档：http://es6.ruanyifeng.com/#docs/module
+
 历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。其他语言都有这项功能，比如 Ruby 的`require`、Python 的`import`，甚至就连 CSS 都有`@import`，但是 JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。
 
 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD（require.js 库，专门用于在浏览器中进行模块化开发，几乎已经淘汰了） 两种。前者用于服务器（Node.js），后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。
@@ -472,6 +474,8 @@ const c = 3
 
 // 语法就是这样，后面的成员也不是对象的简写方式， {} 中的成员必须当前模块能够访问的成员名称
 export {
+  // 不是 a: a 的简写，必须 a
+	// a 必须是当前模块中的某个成员
 	a,
   b,
   c
