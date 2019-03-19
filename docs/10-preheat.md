@@ -8,7 +8,7 @@
   - 我们可以使用原生 XHR
   - 也可以使用jQuery 的 ajax（没必要，浪费）
   - 我们推荐更纯粹的 axios（这个库只封装了 ajax 操作）
-- Vue Router
+- Vue Router 
 - 模块化（ECMAScript 6 Module）
   - import
   - export
@@ -19,6 +19,42 @@
 ```bash
 vue create 项目名称
 ```
+
+## 使用 Vue Router
+
+安装
+
+```bash
+npm install vue-router
+```
+
+创建 `router/index.js` 并写入以下代码
+
+```javascript
+import VueRouter from 'vue-router'
+import Vue from 'vue'
+
+Vue.use(VueRouter)
+
+// import Foo from '../views/Foo/index.vue'
+import Foo from '../views/foo' // 如果加载的是一个目录，则默认加载其中的 index.xxx（js、vue） 文件
+import Bar from '../views/bar'
+
+export default new VueRouter({
+  routes: [ // routes 用于配置路由表，当访问 xxx 路径的时候，展示 xxx 组件
+    { path: '/foo', component: Foo },
+    { path: '/bar', component: Bar }
+  ]
+})
+```
+
+在 `main.js` 中挂在路由实例到 Vue 实例中
+
+```javascript
+...
+```
+
+
 
 ## 接口服务
 
@@ -191,4 +227,16 @@ vue create 项目名称
 
 - [单页应用有那些优缺点？](https://www.zhihu.com/question/20792064)
 - https://juejin.im/post/5a0ea4ec6fb9a0450407725c
+
+## 功能实现
+
+### 列表
+
+### 删除
+
+### 添加
+
+### 编辑
+
+## 总结
 
