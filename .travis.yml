@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - lts/*
+cache:
+  yarn: true
+  directories:
+  - node_modules # NPM packages
 script:
   - npm run docs:build
 deploy:
