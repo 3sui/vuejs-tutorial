@@ -9,15 +9,18 @@
 ## 安装
 
 - Vue.js 不支持 IE8 及其以下版本
-- 最新稳定版本：2.5.16
-- 每个版本的更新日志见 [Github Releases](https://github.com/vuejs/vue/releases)
+  + 因为 Vue 使用了 IE8 无法模拟的 ECMAScript 5 特性。但它支持所有兼容 ECMAScript 5 的浏览器。
+- 最新稳定版本：2.6.10
+  + 每个版本的更新日志见 [Github Releases](https://github.com/vuejs/vue/releases)
 - 直接下载
-  + 开发版本：https://vuejs.org/js/vue.js
-  + 生产版本：https://vuejs.org/js/vue.min.js
+  + 开发版本：`https://vuejs.org/js/vue.js`
+  + 生产版本：`https://vuejs.org/js/vue.min.js`
 - CDN
-  - `<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>`
-- 使用 `npm` 下载（默认安装最新稳定版）
-  + `npm install vue`
+  - `<script src="https://cdn.jsdelivr.net/npm/vue"></script>` 最新稳定版
+  - `<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>` 指定版本
+- 使用 `npm` 下载
+  + `npm install vue` 最新稳定版
+  + `npm install vue@版本号` 指定版本
 
 ---
 

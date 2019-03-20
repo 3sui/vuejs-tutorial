@@ -1,5 +1,6 @@
 const sidebar = require('./sidebar')
 const configureWebpack = require('./webpack.config')
+const moment = require('moment')
 
 module.exports = {
   /**
@@ -33,7 +34,7 @@ module.exports = {
    * @type {Boolean}
    * 默认值: false
    */
-  serviceWorker: true,
+  // serviceWorker: true,
 
   /**
    * 是否对异步加载页面的内容开启占位符加载。如果它是一个字符串，那么它应该是自定义加载组件的名称
@@ -56,12 +57,12 @@ module.exports = {
     editLinkText: '在 GitHub 上编辑此页',
     sidebar,
     sidebarDepth: 2,
-    serviceWorker: {
-      updatePopup: { 
-        message: "有新的内容更新.", 
-        buttonText: "点击刷新"
-      }
-    }
+    // serviceWorker: {
+    //   updatePopup: { 
+    //     message: "有新的内容更新.", 
+    //     buttonText: "点击刷新"
+    //   }
+    // }
   },
 
   /**
@@ -69,16 +70,34 @@ module.exports = {
    * 参考：https://vuepress.vuejs.org/zh/plugin/#using-a-plugin
    */
   plugins: [
+    /**
+     * 回到顶部插件 https://v1.vuepress.vuejs.org/plugin/official/plugin-back-to-top.html
+     */
     ['@vuepress/back-to-top'],
     ['@vuepress/medium-zoom'],
     ['@vuepress/last-updated', {
       transformer: (timestamp, lang) => {
         // 不要忘了安装 moment
-        const moment = require('moment')
         moment.locale(lang)
         return moment(timestamp).format('YYYY-MM-DD hh:mm:ss')
       }
-    }]
+    }],
+    /**
+     * PWA 插件 
+     */
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: {
+        message: "有新的内容更新.",
+        buttonText: "点击更新"
+      }
+    }],
+    [ 
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-136594150-1' // UA-00000000-0
+      }
+    ]
   ],
 
   /**
