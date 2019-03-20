@@ -50,19 +50,13 @@ module.exports = {
     repo: 'lipengzhou/vuejs-tutorial',
     repoLabel: 'GitHub',
     // 假如你的文档仓库和项目本身不在一个仓库：
-    docsRepo: 'lipengzhou/nodejs-tutorial',
+    docsRepo: 'lipengzhou/vuejs-tutorial',
     lastUpdated: '上次更新',
     docsDir: 'docs',
     editLinks: true,
     editLinkText: '在 GitHub 上编辑此页',
     sidebar,
-    sidebarDepth: 2,
-    // serviceWorker: {
-    //   updatePopup: { 
-    //     message: "有新的内容更新.", 
-    //     buttonText: "点击刷新"
-    //   }
-    // }
+    sidebarDepth: 2
   },
 
   /**
