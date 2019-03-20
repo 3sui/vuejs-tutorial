@@ -21,59 +21,59 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
 self.__precacheManifest = [
   {
     "url": "00-content_introduction.html",
-    "revision": "0dafe9b12cf5e22ff66daf81f64256bb"
+    "revision": "fde3b31027ca40feceb056eab103ece3"
   },
   {
     "url": "01-vue_introduction.html",
-    "revision": "d1017b5bf34860ebb9a95bdbb014f139"
+    "revision": "32f4081ac53b85e7dd9efd5db0df71d5"
   },
   {
     "url": "02-getting_started.html",
-    "revision": "7af17480950bf9cd110555c289a128f8"
+    "revision": "889633305aef4f3a806fb1dc0fe85e2c"
   },
   {
     "url": "03-template_syntax.html",
-    "revision": "53c4c49938be8de566cc7718178002e2"
+    "revision": "e38050e202fc57bcf4693727ad8b9d68"
   },
   {
     "url": "04-todomvc.html",
-    "revision": "c395143c255455900bf0a205293fb586"
+    "revision": "f6d22535295522d1087175d5763ee96c"
   },
   {
     "url": "05-component_base.html",
-    "revision": "83ce51368feaed552ca0f2069e52d6b2"
+    "revision": "13b8c8d221bea2b685c331cd45476d63"
   },
   {
     "url": "06-transitions.html",
-    "revision": "d9d4f4ca84a1eee8839765a1b576fd34"
+    "revision": "b7f49862eda5991ad8f39f932f69ec7f"
   },
   {
     "url": "07-ajax.html",
-    "revision": "9a20bae8057c3803a55391197f320b18"
+    "revision": "e70f4b77c6d9c79f4ef9d0cec9421e7c"
   },
   {
     "url": "08-vue_router.html",
-    "revision": "f85a28312fa57af12a904f3de2ec3fe7"
+    "revision": "26d0797d2a716d0c25e7792fcca4cf3a"
   },
   {
     "url": "09-vue_cli.html",
-    "revision": "04287e8faea8066ccebf2e76bd2bff11"
+    "revision": "ebd645e474db8f78bdc4c0e59fe00886"
   },
   {
     "url": "10-preheat.html",
-    "revision": "12ca7d355ce7d451539e0e96e0f93db9"
+    "revision": "219485642ff11dbe92bf5cd0193ec088"
   },
   {
     "url": "11-pinyougou.html",
-    "revision": "1f4b89ea9d5896fca6aa29b8075a5caf"
+    "revision": "d5f272736463a74d3fbabf18abd734e8"
   },
   {
     "url": "12-webpack.html",
-    "revision": "bbf9e01516fc7b1735e93bb6835c2fe3"
+    "revision": "a972b16aff223f2a40603b30e33a2332"
   },
   {
     "url": "404.html",
-    "revision": "faf280dc6af7899fd3c19f73268fefb8"
+    "revision": "aa99765ede38b96342075157b0028b73"
   },
   {
     "url": "assets/css/0.styles.f9563ee1.css",
@@ -264,8 +264,8 @@ self.__precacheManifest = [
     "revision": "d8c46f1768db38a47f1f3d1b4c247195"
   },
   {
-    "url": "assets/js/6.9d513d48.js",
-    "revision": "10595cf94290ab31c74f7880dcf5713d"
+    "url": "assets/js/6.a7e8a312.js",
+    "revision": "cec42588dc07ab0d0db8f2252c2b365a"
   },
   {
     "url": "assets/js/7.46c78f90.js",
@@ -280,12 +280,12 @@ self.__precacheManifest = [
     "revision": "71e1b1021d937f8d78e0cd32cc2c3b71"
   },
   {
-    "url": "assets/js/app.23a83802.js",
-    "revision": "42c8efd91afe42efa1964fefe2e66bfd"
+    "url": "assets/js/app.d1824eae.js",
+    "revision": "b0444e39d3fbbf4d1ac0def9f54a4043"
   },
   {
     "url": "direvtives.html",
-    "revision": "8da5f6fefc8a7c17bccb6060ab77ac1c"
+    "revision": "9be4effb065405c69ac4935bd8d45bf4"
   },
   {
     "url": "icons/android-chrome-192x192.png",
@@ -297,7 +297,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "7c4bf6dbf233ed7f2cb8b065a5168b95"
+    "revision": "0f9fc9c0ffce74885a73d7d26cf43d9c"
   },
   {
     "url": "logo.png",
@@ -305,11 +305,11 @@ self.__precacheManifest = [
   },
   {
     "url": "mvvm.html",
-    "revision": "701e5aaf2eaee136d69429b0f7015073"
+    "revision": "3f297a37c965e59f738e02925fc4b484"
   },
   {
     "url": "vue-cli-example.html",
-    "revision": "097f2c89a1f0cb15baa511be6e73ffd1"
+    "revision": "c4e437686d797872bcf5e44ef0cc34c8"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
