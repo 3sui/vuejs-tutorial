@@ -318,7 +318,7 @@ yarn serve
 - 当请求 / 就展示 Home 组件
 - 当请求 /about 就展示 About 组件
 
-### 代码风格
+### 代码规范
 
 我们的项目采用 [JavaScript Standard Style](https://standardjs.com/) 代码风格，以下是一些基本规范细则。
 
