@@ -20,7 +20,11 @@ git clone https://github.com/lipengzhou/shop-api.git
 
 ```bash
 cd shop-api
+
+# 或者 yarn install
 npm install
+
+# 或者 yarn start
 npm start
 ```
 
@@ -28,9 +32,9 @@ npm start
 
 ![](./assets/README0.png)
 
-::: tip
-以后每次开发的时候一定记得 `npm start` 把接口服务启动起来。
-:::
+> 注意：使用接口期间请确保这个命令行处理开启状态
+>
+> 以后每次开发的时候一定记得 `npm start` 把接口服务启动起来。
 
 ### 部署预览完整版客户端
 
@@ -49,15 +53,17 @@ yarn start
 
 ![](./assets/README2.png)
 
-::: tip
-执行 `yarn start` 命令之后默认开启的服务占用的端口号是 `8080`，如果 8080 被占用，则会 +1 依次向后使用，例如 8081、8082、8083...，以终端提示为准。
-:::
+> 执行 `yarn start` 命令之后默认开启的服务占用的端口号是 `8080`，如果 8080 被占用，则会 +1 依次向后使用，例如 8081、8082、8083...，以终端提示为准。
 
 打开浏览器访问终端中给出的服务地址。
 
 ### API 接口文档
 
-> [http://shop-api.circle.ink/](http://shop-api.circle.ink/)
+- 在线地址：[http://shopapi.lipengzhou.com/](http://shopapi.lipengzhou.com/)
+- 文档仓库地址：https://github.com/lipengzhou/shop-api-doc
+  - 如果需要可以自行下载本地查看
+
+
 
 ### Postman 接口测试工具
 
@@ -110,13 +116,11 @@ yarn global add 包名
 yarn global remove 包名
 ```
 
-::: tip
-使用 yarn 管理第三方包会在项目目录中生成一个 `yarn.lock`，它的作用类似于 `package-lock.json`
-:::
+> 使用 yarn 管理第三方包会在项目目录中生成一个 `yarn.lock`，它的作用类似于 `package-lock.json`
 
-::: warning
-建议在项目中只使用一种包管理工具，或者 npm 或者 yarn，不要两者混合使用，否则会导致包的混乱及重复安装反而降低了效率。
-:::
+> 警告：建议在项目中只使用一种包管理工具，或者 npm 或者 yarn，不要两者混合使用，否则会导致包的混乱及重复安装反而降低了效率。
+>
+> 如果想在你的半拉子项目中切换另一个工具，那就把 node_moudles 删除再使用另一个工具全部安装一下。
 
 ---
 
