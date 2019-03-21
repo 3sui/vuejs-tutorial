@@ -21,59 +21,59 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
 self.__precacheManifest = [
   {
     "url": "00-content_introduction.html",
-    "revision": "fde3b31027ca40feceb056eab103ece3"
+    "revision": "83492ec8e685e7dd23f85b33079feba4"
   },
   {
     "url": "01-vue_introduction.html",
-    "revision": "32f4081ac53b85e7dd9efd5db0df71d5"
+    "revision": "0ac1f77672001102fa28d99ddef5738d"
   },
   {
     "url": "02-getting_started.html",
-    "revision": "889633305aef4f3a806fb1dc0fe85e2c"
+    "revision": "8fb7988416615ea34897089f5f1b7b04"
   },
   {
     "url": "03-template_syntax.html",
-    "revision": "e38050e202fc57bcf4693727ad8b9d68"
+    "revision": "a57bece45c0e2ffce3ba0653e9ab716f"
   },
   {
     "url": "04-todomvc.html",
-    "revision": "f6d22535295522d1087175d5763ee96c"
+    "revision": "345f2afdf4f0fd8ef085d93392d493f4"
   },
   {
     "url": "05-component_base.html",
-    "revision": "13b8c8d221bea2b685c331cd45476d63"
+    "revision": "e791b084478fa4add1b10c1262c62547"
   },
   {
     "url": "06-transitions.html",
-    "revision": "b7f49862eda5991ad8f39f932f69ec7f"
+    "revision": "4f0fffc35fa602dc1013f706f3c03688"
   },
   {
     "url": "07-ajax.html",
-    "revision": "e70f4b77c6d9c79f4ef9d0cec9421e7c"
+    "revision": "e4580af702fd1307d68201724471e4d8"
   },
   {
     "url": "08-vue_router.html",
-    "revision": "26d0797d2a716d0c25e7792fcca4cf3a"
+    "revision": "f657675becbf7528abb602ae4b2bebd2"
   },
   {
     "url": "09-vue_cli.html",
-    "revision": "ebd645e474db8f78bdc4c0e59fe00886"
+    "revision": "51a41a74569fc02b08cefd7c9649a0af"
   },
   {
     "url": "10-preheat.html",
-    "revision": "219485642ff11dbe92bf5cd0193ec088"
+    "revision": "5c178573cc33c82cddea6f1f459ea192"
   },
   {
     "url": "11-pinyougou.html",
-    "revision": "d5f272736463a74d3fbabf18abd734e8"
+    "revision": "648d270d9f4afacd79e91ae19f164064"
   },
   {
     "url": "12-webpack.html",
-    "revision": "a972b16aff223f2a40603b30e33a2332"
+    "revision": "08f15388c6b4c6b25d0053f98af5562a"
   },
   {
     "url": "404.html",
-    "revision": "aa99765ede38b96342075157b0028b73"
+    "revision": "0191eab100387f66232082d6be0373ef"
   },
   {
     "url": "assets/css/0.styles.f9563ee1.css",
@@ -220,8 +220,8 @@ self.__precacheManifest = [
     "revision": "1ad2915030e4f2b140a8b13bf938ba8f"
   },
   {
-    "url": "assets/js/17.52acfbb5.js",
-    "revision": "8a8e2db016585a6f7d7e643fde0e82c1"
+    "url": "assets/js/17.ff4e2e2c.js",
+    "revision": "e36031884f094bbc49ec964c6defa79a"
   },
   {
     "url": "assets/js/18.fd0968b5.js",
@@ -252,16 +252,16 @@ self.__precacheManifest = [
     "revision": "77add905035fab841381774a71fcb15b"
   },
   {
-    "url": "assets/js/3.d5e88b0b.js",
-    "revision": "a2fdf6f99c9ee6601777548a7a992075"
+    "url": "assets/js/3.1cb01e16.js",
+    "revision": "61cd541fa295e75d92da9742c8766d1f"
   },
   {
-    "url": "assets/js/4.210947a8.js",
-    "revision": "4a0e86fcf30efbed9239c22a3a4ffc29"
+    "url": "assets/js/4.ea2f2aa8.js",
+    "revision": "d39d848481fac97eabb878bacd2a7507"
   },
   {
-    "url": "assets/js/5.e31f2507.js",
-    "revision": "d8c46f1768db38a47f1f3d1b4c247195"
+    "url": "assets/js/5.e260a908.js",
+    "revision": "1bc429f65542760b9ceb9e0a0ff626b3"
   },
   {
     "url": "assets/js/6.a7e8a312.js",
@@ -280,12 +280,12 @@ self.__precacheManifest = [
     "revision": "71e1b1021d937f8d78e0cd32cc2c3b71"
   },
   {
-    "url": "assets/js/app.d1824eae.js",
-    "revision": "b0444e39d3fbbf4d1ac0def9f54a4043"
+    "url": "assets/js/app.00088c91.js",
+    "revision": "8a448571805e80e1d14403d47c1337cd"
   },
   {
     "url": "direvtives.html",
-    "revision": "9be4effb065405c69ac4935bd8d45bf4"
+    "revision": "236a71f5fa52c8e7ca03991febabdf6a"
   },
   {
     "url": "icons/android-chrome-192x192.png",
@@ -297,7 +297,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "0f9fc9c0ffce74885a73d7d26cf43d9c"
+    "revision": "3bd6445f62cc2cac9cbeb09f6e3883ac"
   },
   {
     "url": "logo.png",
@@ -305,11 +305,11 @@ self.__precacheManifest = [
   },
   {
     "url": "mvvm.html",
-    "revision": "3f297a37c965e59f738e02925fc4b484"
+    "revision": "bbb7ab8abc9b6697117da21a552473f6"
   },
   {
     "url": "vue-cli-example.html",
-    "revision": "c4e437686d797872bcf5e44ef0cc34c8"
+    "revision": "23a7cdc4801dc24d2710fb62f034885a"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
