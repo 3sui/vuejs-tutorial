@@ -28,6 +28,10 @@ npm install
 npm start
 ```
 
+> 注意：使用 yarn 安装依赖的时候不要使用淘宝的镜像源，否则会导致安装失败
+>
+> 取消淘宝镜像源的方式是删除 `c:/Users/你的用户名/.npmrc` 文件即可
+
 执行完 `npm start` 命令之后，如果看到如下提示信息则说明部署成功。
 
 ![](./assets/README0.png)
