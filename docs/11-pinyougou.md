@@ -1,8 +1,36 @@
-# 第11章 电商管理系统
+# 第11章 综合案例
+
+## 介绍
+
+### 做什么
+
+> 一个前后端分离的电商B端管理系统
+>
+> - 我们主要做客户端
+> - 服务端有准备的接口
+
+### 技术栈
+
+- Vue.js
+- Vue CLI
+- Vue Router
+- ELementUI
+- axios
+- 组件化 + 模块化
+
+### 案例演示
+
+### 案例收获
+
+- 掌握使用 Vue 全家桶开发一个中小型管理系统
 
 ## 零、准备
 
 ### 部署 API 接口服务
+
+> 为了我们学习方便，建议大家把接口服务部署到自己的本地。
+>
+> 实际工作中不需要，一般后端开发人员会把接口部署到本地局域网或者线上给你使用。
 
 1. 将接口服务项目下载到本地
 
@@ -23,34 +51,35 @@ cd shop-api
 
 # 或者 yarn install
 npm install
-
-# 或者 yarn start
-npm start
 ```
 
-> 注意：使用 yarn 安装依赖的时候不要使用淘宝的镜像源，否则会导致安装失败
+> 注意：使用 yarn 安装依赖的时候不要使用淘宝的镜像源，否则可能会导致安装失败
 >
 > 取消淘宝镜像源的方式是删除 `c:/Users/你的用户名/.npmrc` 文件即可
 
-执行完 `npm start` 命令之后，如果看到如下提示信息则说明部署成功。
+最后，双击 `双击启动接口服务.bat` 文件，启动接口服务，如果看到如下提示信息则说明部署启动成功。
 
 ![](./assets/README0.png)
 
 > 注意：使用接口期间请确保这个命令行处理开启状态
 >
-> 以后每次开发的时候一定记得 `npm start` 把接口服务启动起来。
 
 ### 部署预览完整版客户端
 
+> 完整版客户端包括完整的功能和源代码。
+
 ```bash
+# 下载源码到本地
 git clone https://gitee.com/lipengzhou/shop-admin-dist.git
+
+# 进入项目中
 cd shop-amdin-dist
 
-# 或者 npm install
-yarn install
+# 或者 yarn install
+npm install
 
-# 或者 npm start
-yarn start
+# 或者 yarn start
+npm start
 ```
 
 执行完 `yarn start` 命令之后会看到如下提示：
@@ -61,7 +90,7 @@ yarn start
 
 打开浏览器访问终端中给出的服务地址。
 
-
+![1553153073431](./assets/1553153073431.png)
 
 > 测试账号
 >
