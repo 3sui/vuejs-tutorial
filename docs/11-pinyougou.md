@@ -214,6 +214,8 @@ vue create shop-admin-65
 ![1553141967849](./assets/1553141967849.png)
 
 > 等待...
+>
+> 提示：如果装包的过程长时间不动，建议 `Ctrl + C` 打断安装，自己手动在该项目中执行 `npm install`
 
 ![1553142055828](./assets/1553142055828.png)
 
@@ -238,48 +240,9 @@ yarn serve
 
 
 
-![](./assets/README1.png)
-
-::: tip
-如果装包的过程长时间不动，建议 `Ctrl + C` 打断安装，自己手动在该项目中执行 `npm install`
-:::
-
-启动开发模式：
-
-```bash
-cd admin-vue
-npm run dev
-```
-
 ### 项目结构介绍
 
-![xxx](./assets/README4.png)
 
-```text{5-11}
-.
-├── build   webpack打包相关配置文件目录
-├── config  webpack打包相关配置文件目录
-├── node_modules  第三方包
-├── src  源代码
-│   ├── assets  存放一些静态资源，例如 css、img、fonts
-│   ├── components  业务组件
-│   ├── router
-│   ├── └── index.js  路由配置文件
-│   ├── App.vue  根组件
-│   └── main.js  项目启动入口文件
-├── static  静态资源
-│   └── .gitkeep  没啥用，用来充当一个文件就可以提交我们的 static 目录，未来有了其它文件可以把它删掉
-├── .babelrc  es6转es5配置文件，给 babel 编译器用的
-├── .editorconfig  给编辑器看的
-├── .eslintignore  给eslint代码风格校验工具使用的，用来配置忽略代码风格校验的文件或是目录
-├── .eslintrc.js  给eslint代码风格校验工具使用的，用来配置代码风格校验规则
-├── .gitignore  给git使用的，用来配置忽略上传的文件
-├── index.html  单页面应用程序的单页
-├── package.json  项目说明，用来保存依赖项等信息
-├── package-lock.json  锁定第三方包的版本，以及保存包的下载地址
-├── .postcssrc.js  给postcss用的，postcss类似于 less、sass 预处理器
-└── README.md  项目说明文档
-```
 
 ### 代码风格
 
