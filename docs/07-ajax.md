@@ -13,13 +13,14 @@ Vue 不像 jQuery 内置了 ajax 请求函数，在 Vue 中没有提供这样的
 - 目前主流的方案是使用社区中知名的第三方库 [axios](https://github.com/axios/axios)
 - ...
 
-## axios
+## axios 介绍
+
+### 是什么
 
 axios 是一个基于 Promise 的第三方 HTTP 客户端请求库，可以用于浏览器或者 Node.js。
 axios 本身和 Vue 没有一毛钱关系，只是简单纯粹的封装了 HTTP 请求功能。可以运行在任何支持 JavaScript 环境的平台。
-所以和 Vue 结合使用也是没有任何问题的。
 
-- [axios Github](https://github.com/axios/axios)
+- [Github 仓库](https://github.com/axios/axios)
 
 ### 特色
 
@@ -32,7 +33,15 @@ axios 本身和 Vue 没有一毛钱关系，只是简单纯粹的封装了 HTTP 
 - 自动转换 JSON 数据
 - 客户端支持防止 XSRF
 
-### 浏览器支持
+### 兼容性
+
+![1555163278802](./assets/1555163278802.png)
+
+> axios 依赖原生的 ECMAScript 6 Promise 支持。
+>
+> 如果浏览器不支持 ECMAScript 6 Promise，可以使用 [es6-promise](<https://github.com/stefanpenner/es6-promise>) 进行兼容处理。
+
+## 起步
 
 ### 安装
 
@@ -54,18 +63,23 @@ $ bower install axios
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ```
 
-### 示例
-
-执行一个 `GET` 请求
+### 执行一个 `GET` 请求
 
 ```javascript
+const axios = require('axios');
+
 // Make a request for a user with a given ID
 axios.get('/user?ID=12345')
   .then(function (response) {
+    // handle success
     console.log(response);
   })
   .catch(function (error) {
+    // handle error
     console.log(error);
+  })
+  .then(function () {
+    // always executed
   });
 
 // Optionally the request above could also be done as
@@ -79,10 +93,23 @@ axios.get('/user', {
   })
   .catch(function (error) {
     console.log(error);
-  });
+  })
+  .then(function () {
+    // always executed
+  });  
+
+// Want to use async/await? Add the `async` keyword to your outer function/method.
+async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
 ```
 
-执行一个 POST 请求
+### 执行一个 `POST` 请求
 
 ```javascript
 axios.post('/user', {
@@ -97,7 +124,7 @@ axios.post('/user', {
   });
 ```
 
-执行多个并发请求
+### 执行多个并发请求
 
 ```javascript
 function getUserAccount() {
@@ -114,11 +141,11 @@ axios.all([getUserAccount(), getUserPermissions()])
   }));
 ```
 
-### axios API
+## axios API
 
-我们可以像使用 `$.ajax()` 一样来使用 `axios`.
+### axios(config)
 
-`axios(config)`
+我们可以像使用 `$.ajax()` 一样来使用 `axios`。
 
 ```javascript
 // Send a POST request
@@ -139,19 +166,19 @@ axios({
   url:'http://bit.ly/2mTM3nY',
   responseType:'stream'
 })
-  .then(function(response) {
-  response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-});
+  .then(function (response) {
+    response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+  });
 ```
 
-`axios(url[, config])`
+### axios(url[, config])
 
 ```javascript
 // Send a GET request (default method)
 axios('/user/12345');
 ```
 
-#### 请求方法别名
+### 请求方法别名
 
 为了方便，axios 为所有的请求方法都提供了别名支持。
 
@@ -166,45 +193,515 @@ axios('/user/12345');
 
 > 注意：当使用了这些别名方法时，`url`, `method` 和 `data` 属性不需要声明在配置对象中。
 
-#### 并发请求
+### 并发请求
 
 axios 提供了辅助函数用来处理并发请求。
 
 - axios.all(iterable)
 - axios.spread(callback)
 
-#### 创建一个 axios 实例
+### axios 实例
 
-#### 实例方法
+可以创建一个新的 axios 实例进行自定义配置。
 
-### 请求配置对象
+```js
+const instance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000,
+  headers: {'X-Custom-Header': 'foobar'}
+});
 
-### 响应体结构
+```
 
-### 默认配置
 
-#### 全局配置
 
-#### 局部配置
+### 实例方法
 
-#### 配置优先顺序
+实例拥有和 axios 基本一样的能力。
 
-### 拦截器
+- axios#request(config)
 
-### 处理错误
+- axios#get(url[, config])
 
-### 取消请求
+- axios#delete(url[, config])
 
-### 使用 `application/x-www-form-urlencoded`
+- axios#head(url[, config])
 
-By default, axios serializes JavaScript objects to JSON. To send data in the application/x-www-form-urlencoded format instead, you can use one of the following options.
+- axios#options(url[, config])
 
-#### 浏览器端
+- axios#post(url[, data[, config]])
 
-#### Node.js
+- axios#put(url[, data[, config]])
 
-### Promises
+- axios#patch(url[, data[, config]])
 
-axios 依赖原生的 EcmaScript 6 Promise 支持。
-如果你的运行环境不支持 EcmaScript 6 Promise，你可以使用 [ployfill](https://github.com/stefanpenner/es6-promise).
+- axios#getUri([config])
 
+## 请求配置对象
+
+下面是所有的可参考配置项。
+
+```json
+{
+  // `url` is the server URL that will be used for the request
+  url: '/user',
+
+  // `method` is the request method to be used when making the request
+  method: 'get', // default
+
+  // `baseURL` will be prepended to `url` unless `url` is absolute.
+  // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
+  // to methods of that instance.
+  baseURL: 'https://some-domain.com/api/',
+
+  // `transformRequest` allows changes to the request data before it is sent to the server
+  // This is only applicable for request methods 'PUT', 'POST', and 'PATCH'
+  // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,
+  // FormData or Stream
+  // You may modify the headers object.
+  transformRequest: [function (data, headers) {
+    // Do whatever you want to transform the data
+
+    return data;
+  }],
+
+  // `transformResponse` allows changes to the response data to be made before
+  // it is passed to then/catch
+  transformResponse: [function (data) {
+    // Do whatever you want to transform the data
+
+    return data;
+  }],
+
+  // `headers` are custom headers to be sent
+  headers: {'X-Requested-With': 'XMLHttpRequest'},
+
+  // `params` are the URL parameters to be sent with the request
+  // Must be a plain object or a URLSearchParams object
+  params: {
+    ID: 12345
+  },
+
+  // `paramsSerializer` is an optional function in charge of serializing `params`
+  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+  paramsSerializer: function (params) {
+    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  },
+
+  // `data` is the data to be sent as the request body
+  // Only applicable for request methods 'PUT', 'POST', and 'PATCH'
+  // When no `transformRequest` is set, must be of one of the following types:
+  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
+  // - Browser only: FormData, File, Blob
+  // - Node only: Stream, Buffer
+  data: {
+    firstName: 'Fred'
+  },
+
+  // `timeout` specifies the number of milliseconds before the request times out.
+  // If the request takes longer than `timeout`, the request will be aborted.
+  timeout: 1000, // default is `0` (no timeout)
+
+  // `withCredentials` indicates whether or not cross-site Access-Control requests
+  // should be made using credentials
+  withCredentials: false, // default
+
+  // `adapter` allows custom handling of requests which makes testing easier.
+  // Return a promise and supply a valid response (see lib/adapters/README.md).
+  adapter: function (config) {
+    /* ... */
+  },
+
+  // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.
+  // This will set an `Authorization` header, overwriting any existing
+  // `Authorization` custom headers you have set using `headers`.
+  auth: {
+    username: 'janedoe',
+    password: 's00pers3cret'
+  },
+
+  // `responseType` indicates the type of data that the server will respond with
+  // options are 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
+  responseType: 'json', // default
+
+  // `responseEncoding` indicates encoding to use for decoding responses
+  // Note: Ignored for `responseType` of 'stream' or client-side requests
+  responseEncoding: 'utf8', // default
+
+  // `xsrfCookieName` is the name of the cookie to use as a value for xsrf token
+  xsrfCookieName: 'XSRF-TOKEN', // default
+
+  // `xsrfHeaderName` is the name of the http header that carries the xsrf token value
+  xsrfHeaderName: 'X-XSRF-TOKEN', // default
+
+  // `onUploadProgress` allows handling of progress events for uploads
+  onUploadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+
+  // `onDownloadProgress` allows handling of progress events for downloads
+  onDownloadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+
+  // `maxContentLength` defines the max size of the http response content in bytes allowed
+  maxContentLength: 2000,
+
+  // `validateStatus` defines whether to resolve or reject the promise for a given
+  // HTTP response status code. If `validateStatus` returns `true` (or is set to `null`
+  // or `undefined`), the promise will be resolved; otherwise, the promise will be
+  // rejected.
+  validateStatus: function (status) {
+    return status >= 200 && status < 300; // default
+  },
+
+  // `maxRedirects` defines the maximum number of redirects to follow in node.js.
+  // If set to 0, no redirects will be followed.
+  maxRedirects: 5, // default
+
+  // `socketPath` defines a UNIX Socket to be used in node.js.
+  // e.g. '/var/run/docker.sock' to send requests to the docker daemon.
+  // Only either `socketPath` or `proxy` can be specified.
+  // If both are specified, `socketPath` is used.
+  socketPath: null, // default
+
+  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
+  // and https requests, respectively, in node.js. This allows options to be added like
+  // `keepAlive` that are not enabled by default.
+  httpAgent: new http.Agent({ keepAlive: true }),
+  httpsAgent: new https.Agent({ keepAlive: true }),
+
+  // 'proxy' defines the hostname and port of the proxy server.
+  // You can also define your proxy using the conventional `http_proxy` and
+  // `https_proxy` environment variables. If you are using environment variables
+  // for your proxy configuration, you can also define a `no_proxy` environment
+  // variable as a comma-separated list of domains that should not be proxied.
+  // Use `false` to disable proxies, ignoring environment variables.
+  // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
+  // supplies credentials.
+  // This will set an `Proxy-Authorization` header, overwriting any existing
+  // `Proxy-Authorization` custom headers you have set using `headers`.
+  proxy: {
+    host: '127.0.0.1',
+    port: 9000,
+    auth: {
+      username: 'mikeymike',
+      password: 'rapunz3l'
+    }
+  },
+
+  // `cancelToken` specifies a cancel token that can be used to cancel the request
+  // (see Cancellation section below for details)
+  cancelToken: new CancelToken(function (cancel) {
+  })
+}
+```
+
+
+
+## 响应体结构
+
+请求的响应包含以下信息。
+
+```json
+{
+  // `data` is the response that was provided by the server
+  data: {},
+
+  // `status` is the HTTP status code from the server response
+  status: 200,
+
+  // `statusText` is the HTTP status message from the server response
+  statusText: 'OK',
+
+  // `headers` the headers that the server responded with
+  // All header names are lower cased
+  headers: {},
+
+  // `config` is the config that was provided to `axios` for the request
+  config: {},
+
+  // `request` is the request that generated this response
+  // It is the last ClientRequest instance in node.js (in redirects)
+  // and an XMLHttpRequest instance the browser
+  request: {}
+}
+```
+
+当使用 `then` 方法时，将收到如下结果
+
+```js
+axios.get('/user/12345')
+  .then(function (response) {
+    console.log(response.data);
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+  });
+```
+
+
+
+## 默认配置
+
+### 全局 axios 配置
+
+```js
+axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+```
+
+
+
+### 自定义 axios 实例配置
+
+```js
+// Set config defaults when creating the instance
+const instance = axios.create({
+  baseURL: 'https://api.example.com'
+});
+
+// Alter defaults after instance has been created
+instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+```
+
+
+
+### 配置的优先级
+
+当全局、实例、请求出现相同的 config 配置项时，优先级如下
+
+- 请求的 config
+- 实例的 config
+- 全局的 config
+
+> 自上而下
+
+```js
+// Create an instance using the config defaults provided by the library
+// At this point the timeout config value is `0` as is the default for the library
+const instance = axios.create();
+
+// Override timeout default for the library
+// Now all requests using this instance will wait 2.5 seconds before timing out
+instance.defaults.timeout = 2500;
+
+// Override timeout for this request as it's known to take a long time
+instance.get('/longRequest', {
+  timeout: 5000
+});
+```
+
+
+
+## 拦截器
+
+axios 支持在处理请求或响应之前拦截请求或响应。
+
+```js
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    return config;
+  }, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  });
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+    // Do something with response data
+    return response;
+  }, function (error) {
+    // Do something with response error
+    return Promise.reject(error);
+  });
+```
+
+也可以删除拦截器
+
+```js
+const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
+axios.interceptors.request.eject(myInterceptor);
+```
+
+也可以为自定义 axios 实例添加拦截器
+
+```js
+const instance = axios.create();
+instance.interceptors.request.use(function () {/*...*/});
+```
+
+
+
+## 处理错误
+
+```js
+axios.get('/user/12345')
+  .catch(function (error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+    }
+    console.log(error.config);
+  });
+```
+
+可以使用validateStatus配置选项定义自定义HTTP状态代码错误范围。
+
+```js
+axios.get('/user/12345', {
+  validateStatus: function (status) {
+    return status < 500; // Reject only if the status code is greater than or equal to 500
+  }
+})
+```
+
+
+
+## 取消请求
+
+可以使用取消令牌取消 token。
+
+可以使用 `CancelToken.source` 工厂函数创建取消令牌，如下所示：
+
+```js
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
+axios.get('/user/12345', {
+  cancelToken: source.token
+}).catch(function (thrown) {
+  if (axios.isCancel(thrown)) {
+    console.log('Request canceled', thrown.message);
+  } else {
+    // handle error
+  }
+});
+
+axios.post('/user/12345', {
+  name: 'new name'
+}, {
+  cancelToken: source.token
+})
+
+// cancel the request (the message parameter is optional)
+source.cancel('Operation canceled by the user.');
+```
+
+还可以通过将函数执行程序传递给 Cancel Token 构造函数来创建取消令牌：
+
+```js
+const CancelToken = axios.CancelToken;
+let cancel;
+
+axios.get('/user/12345', {
+  cancelToken: new CancelToken(function executor(c) {
+    // An executor function receives a cancel function as a parameter
+    cancel = c;
+  })
+});
+
+// cancel the request
+cancel();
+```
+
+> 注意：可以使用相同的取消令牌取消多个请求。
+
+## 使用 application/x-www-form-urlencoded
+
+默认情况下，axios 将 JavaScript 对象序列化为 `JSON`。要以 `application / x-www-form-urlencoded` 格式发送数据，您可以使用以下选项之一。
+
+
+
+### 浏览器端
+
+在浏览器中，您可以使用 [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) API，如下所示：
+
+```js
+const params = new URLSearchParams();
+params.append('param1', 'value1');
+params.append('param2', 'value2');
+axios.post('/foo', params);
+```
+
+> 有些浏览器还不支持 URLSearchParms，可以使用这个 [polyfill](<https://github.com/WebReflection/url-search-params>) 做兼容处理。
+
+另外也可以使用 [qs](<https://github.com/ljharb/qs>) 来进行处理
+
+```js
+const qs = require('qs');
+axios.post('/foo', qs.stringify({ 'bar': 123 }));
+```
+
+或者在 ECMAScript 6 中
+
+```js
+import qs from 'qs';
+const data = { 'bar': 123 };
+const options = {
+  method: 'POST',
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+  data: qs.stringify(data),
+  url,
+};
+axios(options);
+```
+
+
+
+### Node.js
+
+在node.js中，您可以使用 [querystring](https://nodejs.org/api/querystring.html) 模块，如下所示：
+
+```js
+const querystring = require('querystring');
+axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
+```
+
+你也可以使用 [qs](https://github.com/ljharb/qs)。
+
+> 注意：querystring 模块不支持嵌套对象，qs 模块支持。
+
+## 发送文件
+
+axios 支持发送 XHR 2.0 中新增的 FormData 对象。
+
+```js
+const formData = new FormData()
+formData.append('file', document.getElementById('file').files[0])
+
+axops({
+  method: 'POST',
+  url: 'xxx',
+  data: formData
+}).then(res => {
+  console.log(res)
+})
+```
+
+> axios 会自动识别数据对象 FormData，并将请求头中的 Content-Type 设置为 `multipart/form-data`。
+
+## 在 Vue 中使用 axios
+
+1. 从模块化角度考虑，建议将 axios 配置相关代码放到一个独立的模块中
+2. 使用 axios 建议通过创建单独的 axios 实例的方式，例如当你的应用有多个不同域名的接口的时候，就可以创建多个 axios 实例分别配置
+3. 当然，如果你的接口域名只有一个，可以不创建实例，直接配置全局的 axios 也是可以的，但根据经验，推荐实例方式，因为当你有了这样的需求的时候，我们只需要增加代码而不需要修改代码
+4. 我们最后要使用封装好的 axios 发送请求，有两种方式
+   1. 方式一：在哪个组件中发送请求就在哪里 import 引入
+   2. 方式二：几乎每个组件都需要发送请求，所以可以将 axios 挂载到 Vue 原型上，这样就可以直接在组件中通过 this.xxx 来访问 axios 了，而不需要每次都来 import
+   3. 方式三：为了项目的更好维护性，我们建议将所有的请求都封装为 api 模块中的请求函数，这样哪里需要就在哪里加载调用。由于 api 是独立的 js 模块，不是组件，所以在 api 模块中发送请求必须 import  导入  axios 函数。所以这种情况下将 axios 挂载到 Vue 原型上就没有意义了，因为 api 中也调用不到
+   4. 最后：推荐方式二（更简单） + 方式三（可维护性好，推荐）
