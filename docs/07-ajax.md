@@ -479,6 +479,8 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 > 自上而下
 
+例如下面的情况：
+
 ```js
 // Create an instance using the config defaults provided by the library
 // At this point the timeout config value is `0` as is the default for the library

@@ -108,6 +108,8 @@ module.exports = {
     // 内容导航 markdown-it-table-of-contents 的选项
     toc: { includeLevel: [2, 3] },
     // 一个用于修改当前的 markdown-it 实例的默认配置，或者应用额外的插件的函数。参考文档：https://github.com/markdown-it/markdown-it
-    config: md => { /* config markdown instance */ }
+    extendMarkdown: md => {
+      md.use(require('markdown-it-task-lists'))
+    }
   }
 }
